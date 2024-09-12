@@ -1,6 +1,5 @@
 package com.indium.assignment;
 
-import com.indium.assignment.MatchDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +22,8 @@ public class MatchDataController {
         }
 
         try {
-            // Pass MultipartFile's InputStream to the service
-            matchDataService.parseAndSaveMatchData(file.getInputStream());
+            // Pass MultipartFile directly to the service for handling
+            matchDataService.uploadJsonFile(file);
             return ResponseEntity.status(HttpStatus.OK).body("File uploaded and data saved successfully");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing the file: " + e.getMessage());
@@ -33,5 +32,4 @@ public class MatchDataController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Server Error: " + e.getMessage());
         }
     }
-
 }

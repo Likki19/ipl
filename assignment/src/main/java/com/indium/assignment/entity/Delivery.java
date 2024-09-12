@@ -19,8 +19,7 @@ public class Delivery {
     private Integer runsBatter;
     private Integer runsExtras;
     private Integer runsTotal;
-    private String wicketType;
-    private String playerOut;
+
 
     @ManyToOne
     @JoinColumn(name = "match_id")
